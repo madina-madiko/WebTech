@@ -1,0 +1,149 @@
+import React, { Component } from 'react';
+
+import EditableTimerList from './EditableTimerList.js';
+
+import ToggleableTimerForm from './ToggleableTimerForm.js';
+
+import helpers from 'C:/Users/Admin/Desktop/WEB/tracking_timer/src/helpers.js';
+
+
+
+class TimersDashboard extends React.Component {
+
+    state = {
+
+      timers: [{
+
+        title: 'Test title 1',
+
+        project: 'Test project 1',
+
+        id: helpers.guid(),
+
+        elapsed: 5456099,
+
+        runningSince: Date.now(),
+
+      }, {
+
+        title: 'Test title 2',
+
+        project: 'Test project 2',
+
+        id: helpers.guid(),
+
+        elapsed: 1273998,
+
+        runningSince: null,
+
+      }],
+
+    };
+
+  
+
+    handleCreateFormSubmit = (timer) => {
+
+      this.createTimer(timer);
+
+    };
+
+  
+
+    createTimer = (timer) => {
+
+      const t = helpers.newTimer(timer);
+
+      this.setState({
+
+        timers: this.state.timers.concat(t),
+
+      });
+
+    };
+
+
+
+    handleEditFormSubmit = (attrs) => {
+
+      this.updateTimer(attrs);
+
+    };
+
+  
+
+    updateTimer = (attrs) => {
+
+      this.setState({
+
+        timers: this.state.timers.map((timer) => {
+
+          if (timer.id === attrs.id) {
+
+            return Object.assign({}, timer, {
+
+              title: attrs.title,
+
+              project: attrs.project,
+
+            });
+
+          } else {
+
+            return timer;
+
+          }
+
+        }),
+
+      });
+
+    };
+
+
+
+    handleTrashClick = (timerId) => {
+
+      this.deleteTimer(timerId);
+
+    };
+
+
+
+    deleteTimer = (timerId) => {
+
+      this.setState({
+
+        timers: this.state.timers.filter(t => t.id !== timerId),
+
+      });
+
+    };
+
+
+
+    render() {
+
+      return (
+
+        <div className='ui three column centered grid'>
+
+        <div className='column'>
+
+        <EditableTimerList  timers={this.state.timers} onFormSubmit={this.handleEditFormSubmit} onTrashClick={this.handleTrashClick}/>
+
+        <ToggleableTimerForm onFormSubmit={this.handleCreateFormSubmit}/>
+
+        </div>
+
+        </div>
+
+      );
+
+    }
+
+  }
+
+
+
+  export default TimersDashboard;
