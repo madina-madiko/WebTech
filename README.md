@@ -1,3 +1,5 @@
+Web Project
+
 Nowadays we can say that the fashion for visits of restaurants has returned. But times change and in the 21st century people start to get used to IT technologies. That's why we want to create the application for restaurants, in order to make people's lives easier. 
           First of all, our app will be helpful for clients, because they spend less time for making orders and waiting the waiters. For instance, people often do not have time even for waiting orders. Using our website they can make an order sitting at home or on the way to the restaurant. And to the arrival to restaurant their dishes will be already cooked. 
 	Secondly, it will be useful for the people who have problems with communicating, for those who cannot talk or decide what to order in front of other people. In this case people can reduce contact with people. 
